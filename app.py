@@ -56,6 +56,7 @@ def display_todos_list(current_todos, completed_todos):
     elif action_input.strip().capitalize() == 'C':
         current_todos, completed_todos = complete_todo(current_todos, completed_todos)
     elif action_input.strip().capitalize() == 'D':
+        current_todos = delete_todo(current_todos)
         print('delete') # TODO code delete function
     else:
         print('Invalid command.')
@@ -100,6 +101,40 @@ def complete_todo(current_todos, completed_todos):
             complete_todo(current_todos, completed_todos)
     elif action_input.strip().capitalize() == 'N':
         return current_todos, completed_todos
+    else:
+        print('Invalid command.')
+
+def delete_todo(current_todos):
+    print('**********\nDelete a To-Do')
+    todo_id = int(input('Type in the To-Do ID you\'d like to delete: '))
+
+    action_input = input('Enter \'Y\' to continue, \'N\' to cancel, or \'M\' to return to the Navigation Menu: ')
+
+    if action_input.strip().capitalize() == 'M':
+        display_navigation_menu()
+    elif action_input.strip().capitalize() == 'Y':
+        secondary_action_input = input('Are you sure you want to delete this To-Do?\n*Deleting this To-Do will permanently remove the To-Do data*\nEnter \'Y\' to confirm, \'N\' to cancel, or \'M\' to return to the Navigation Menu: ')
+
+        if secondary_action_input.strip().capitalize() == 'M':
+            display_navigation_menu()
+        elif secondary_action_input.strip().capitalize() == 'Y':
+            todo_deleted = False
+            for i in range(len(current_todos)):
+                if i == todo_id:
+                    current_todos.pop(i)
+                    todo_deleted = True
+            
+            if todo_deleted:
+                return current_todos
+            else:
+                print('To-Do ID does not exist.')
+                delete_todo(current_todos)
+        elif secondary_action_input.strip().capitalize() == 'N':
+            return current_todos
+        else:
+            print('Invalid command.')
+    elif action_input.strip().capitalize() == 'N':
+        return current_todos
     else:
         print('Invalid command.')
 
