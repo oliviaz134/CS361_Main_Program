@@ -2,7 +2,8 @@
 def display_navigation_menu():
     print('Navigation Menu\n\n\
     1. View Instructions\n\
-    2. View To-Dos List\n')
+    2. View To-Dos List\n\
+    0. Quit')
     
     nav_input = input('Enter \'2\' to go to your To-Dos List to start adding To-Dos or another number from the Navigation Menu: ')
 
@@ -10,7 +11,7 @@ def display_navigation_menu():
         display_instructions()
     elif nav_input.strip() == '2':
         display_todos_list(current_todos, completed_todos)
-    elif nav_input.strip() == 'quit':
+    elif nav_input.strip() == '0':
         quit()
     else:
         print('Invalid command.')
