@@ -10,6 +10,8 @@ def display_navigation_menu():
         display_instructions()
     elif nav_input.strip() == '2':
         display_todos_list(current_todos, completed_todos)
+    elif nav_input.strip() == 'quit':
+        quit()
     else:
         print('Invalid command.')
     return
