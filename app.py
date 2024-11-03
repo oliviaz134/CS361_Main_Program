@@ -40,7 +40,7 @@ def display_todos_list(current_todos, completed_todos):
     print('\nCompleted')
 
     for i, todo in enumerate(completed_todos):
-        print(f'ID: {i} {todo}')
+        print(f'{todo}')
     
     print('\nActions:\n\
     A. Add a To-Do\n\
@@ -57,7 +57,6 @@ def display_todos_list(current_todos, completed_todos):
         current_todos, completed_todos = complete_todo(current_todos, completed_todos)
     elif action_input.strip().capitalize() == 'D':
         current_todos = delete_todo(current_todos)
-        print('delete') # TODO code delete function
     else:
         print('Invalid command.')
     display_todos_list(current_todos, completed_todos)
@@ -66,7 +65,7 @@ def add_todo(current_todos):
     print('Add a To-Do\n')
     description = input('Description: ')
 
-    action_input = input('Enter \'Y\' to add the new To-Do to your To-Dos list, \'N\' to cancel, or \'M\' to return to the Navigation Menu:')
+    action_input = input('Enter \'Y\' to add the new To-Do to your To-Dos list, \'N\' to cancel, or \'M\' to return to the Navigation Menu: ')
 
     if action_input.strip().capitalize() == 'M':
         display_navigation_menu()
@@ -140,8 +139,10 @@ def delete_todo(current_todos):
 
 if __name__ == '__main__':
     app_is_running = True
-    current_todos = ['walk the dog', 'feed the cat']
-    completed_todos = ['take out the trash']
+    current_todos = []
+    completed_todos = []
+    # current_todos = ['walk the dog', 'feed the cat']
+    # completed_todos = ['take out the trash']
 
     while app_is_running:
         print('To-Do Application\n')
